@@ -1,0 +1,36 @@
+<launch>
+	
+	<arg name="use_xacro" default="false" />
+
+	<arg name="rviz_config_file"  default="$(find navvis_description)/config/config.rviz" />
+	
+
+
+	<arg if="$(arg use_xacro)" name="filename" default="robot.xacro" />
+	<arg unless="$(arg use_xacro)" name="filename" default="robot.urdf" />
+	
+
+	<arg name="file" default="$(find navvis_description)/urdf/$(arg filename)" />
+	
+
+	<param if="$(arg use_xacro)" name="robot_description" command="$(find xacro)/xacro $(arg file)" />
+	<param unless="$(arg use_xacro)" name="robot_description" textfile="$(arg file)" />
+	
+
+	<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+	
+
+	<node pkg="rviz" type="rviz" name="rviz" args="-d $(arg rviz_config_file)" required="true" />
+
+
+	<!-- This should not be required because if the GUI is not enabled, the non GUI version comes up which shows the wheels -->
+	rosrun tf2_ros static_transform_publisher 0.0 0.365 0.2 -1.57 0.0 0.0 base wheel_left_joint
+	rosrun tf2_ros static_transform_publisher 0.0 -0.365 0.2 -1.57 0.0 0.0 base wheel_right_joint
+	rosrun tf2_ros static_transform_publisher 0.0 -0.365 0.2 -1.57 0.0 0.0 base wheel_center_joint
+	
+	<arg name="use_joint_state_publisher_gui" default="true" />
+  	<arg if="$(arg use_joint_state_publisher_gui)" name="joint_publisher" default="joint_state_publisher_gui" />
+  	<arg unless="$(arg use_joint_state_publisher_gui)" name="joint_publisher" default="joint_state_publisher" />
+  	<node pkg="$(arg joint_publisher)" type="$(arg joint_publisher)" name="$(arg joint_publisher)" />
+
+</launch>
