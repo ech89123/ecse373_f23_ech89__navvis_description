@@ -17,9 +17,13 @@
 	<param unless="$(arg use_xacro)" name="robot_description" textfile="$(arg file)" />
 	
 
-	<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+	<arg name="use_robot_state_publisher" default="true" />
+  	<node if="$(arg use_robot_state_publisher)" pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+
 	
 
+	<arg name="use_sim_time" default="false"/>
+  
 	<node pkg="rviz" type="rviz" name="rviz" args="-d $(arg rviz_config_file)" required="true" />
 
 
@@ -32,5 +36,7 @@
   	<arg if="$(arg use_joint_state_publisher_gui)" name="joint_publisher" default="joint_state_publisher_gui" />
   	<arg unless="$(arg use_joint_state_publisher_gui)" name="joint_publisher" default="joint_state_publisher" />
   	<node pkg="$(arg joint_publisher)" type="$(arg joint_publisher)" name="$(arg joint_publisher)" />
+  	
+ 
 
 </launch>

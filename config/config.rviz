@@ -7,7 +7,6 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
-        - /RobotModel1/Links1
       Splitter Ratio: 0.5
     Tree Height: 549
   - Class: rviz/Selection
@@ -27,7 +26,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: LaserScan
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -68,37 +67,150 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        laser_horiz_joint:
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        gazebo_laser_vert_bottom:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        laser_vert_bottom_joint:
+        imu:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        laser_vert_top_left_joint:
+        laser_horiz:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        laser_vert_top_right_joint:
+        laser_horiz_base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        wheel_center_joint:
+        laser_vert_bottom:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        laser_vert_top_left:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        laser_vert_top_right:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_center:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_left:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_right:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
       Name: RobotModel
-      Robot Description: my_robot
+      Robot Description: robot_description
       TF Prefix: ""
       Update Interval: 0
       Value: true
       Visual Enabled: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/LaserScan
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 10
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Name: LaserScan
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic: /laser_vert_bottom/scan
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/LaserScan
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 10
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Name: LaserScan
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic: /laser_vert_top_left/scan
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/LaserScan
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 10
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Name: LaserScan
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic: /laser_vert_top_right/scan
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -127,7 +239,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.5596909523010254
+      Distance: 8.90052318572998
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -135,17 +247,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: 0.5689098238945007
+        Y: 0.36779242753982544
+        Z: 0.6661865711212158
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.785398006439209
+      Pitch: 0.5303983092308044
       Target Frame: <Fixed Frame>
-      Yaw: 0.785398006439209
+      Yaw: 6.218580722808838
     Saved: ~
 Window Geometry:
   Displays:
@@ -163,5 +275,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1702
-  X: 72
-  Y: 27
+  X: 169
+  Y: 203
